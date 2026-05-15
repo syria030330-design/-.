@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>校園輕資源交換站 | 筆記·文具·文創共享</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, 'Segoe UI', 'Roboto', 'Noto Sans', sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      padding: 2rem 1.5rem;
+      color: #1e2a3e;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* 標題區 */
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #2b5e3b, #3b8c4a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .hero p {
+      color: #4a627a;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* 新增表單卡片 */
+    .form-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e9edf2;
+      transition: box-shadow 0.2s;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      align-items: end;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .input-group label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #2c5a3b;
+      letter-spacing: 0.3px;
+    }
+    .input-group input, .input-group select, .input-group textarea {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      background: #fefefe;
+      transition: 0.2s;
+      outline: none;
+      resize: vertical;
+    }
+    .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+      border-color: #3b8c4a;
+      box-shadow: 0 0 0 3px rgba(59,140,74,0.1);
+    }
+    textarea {
+      min-height: 70px;
+    }
+    .btn-primary {
+      background: #2b5e3b;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .btn-primary:hover {
+      background: #1f452c;
+      transform: translateY(-1px);
+    }
+
+    /* 篩選按鈕列 */
+    .filter-bar {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      justify-content: center;
+    }
+    .filter-btn {
+      background: #edf2f7;
+      border: none;
+      padding: 0.5rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #2d3e50;
+    }
+    .filter-btn.active {
+      background: #2b5e3b;
+      color: white;
+      box-shadow: 0 4px 8px rgba(43,94,59,0.2);
+    }
+    .filter-btn:hover:not(.active) {
+      background: #dce5ef;
+    }
+
+    /* 資源卡片列表 */
+    .records-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .record-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      transition: 0.2s;
+      border-left: 8px solid #84b88c;
+      border-left-color: #84b88c;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .record-card.status-done {
+      opacity: 0.75;
+      background: #f9fafc;
+      border-left-color: #9ca3af;
+      filter: grayscale(0.02);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px dashed #e9edf2;
+      padding-bottom: 8px;
+    }
+    .badge-category {
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #1f4f2d;
+    }
+    .status-badge {
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+    .status-active {
+      background: #dff9e6;
+      color: #166534;
+    }
+    .status-done-badge {
+      background: #e5e7eb;
+      color: #4b5563;
+      text-decoration: line-through;
+    }
+    .card-content {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #1f2937;
+      font-weight: 500;
+      word-break: break-word;
+    }
+    .detail-row {
+      font-size: 0.8rem;
+      color: #4b5563;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 18px;
+    }
+    .detail-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .message-box {
+      background: #f1f5f9;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: #0c4e2e;
+      font-style: italic;
+      border-left: 3px solid #4caf7a;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .toggle-btn {
+      background: none;
+      border: 1px solid #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      background: white;
+    }
+    .toggle-btn:hover {
+      background: #eef2ff;
+      border-color: #2b5e3b;
+    }
+    .timestamp {
+      font-size: 0.65rem;
+      color: #7c8ba0;
+    }
+    .empty-msg {
+      text-align: center;
+      padding: 3rem;
+      background: white;
+      border-radius: 42px;
+      color: #5b6e8c;
+    }
+    @media (max-width: 720px) {
+      body { padding: 1rem; }
+      .records-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>📚 校園輕資源交換站</h1>
+    <p>文具互借・筆記共享・文創交流 — 讓校園閒置變共鳴</p>
+  </div>
+
+  <!-- 新增資源表單 -->
+  <div class="form-card">
+    <form id="resourceForm">
+      <div class="form-grid">
+        <div class="input-group">
+          <label>📦 資源內容 *</label>
+          <input type="text" id="contentInput" placeholder="例：全新活頁紙 / 英文筆記 / 手繪書籤" required>
+        </div>
+        <div class="input-group">
+          <label>🏷️ 分類 *</label>
+          <select id="categorySelect" required>
+            <option value="文具/互借交換">✏️ 文具 · 互借/交換</option>
+            <option value="學習素材/無償共享">📖 學習素材 · 無償共享</option>
+            <option value="輕文創/展示交換">🎨 輕文創 · 展示/交換</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>💬 實名留言 (交換意向/需求) *</label>
+          <textarea id="messageInput" placeholder="範例：王小明 – 想交換同款貼紙，希望可以校門口面交" rows="2" required></textarea>
+        </div>
+        <div class="input-group">
+          <label>📍 地點 / 聯絡方式 (校園快速對接)</label>
+          <input type="text" id="contactInput" placeholder="例：圖書館2F / line:id123 或 教室305">
+        </div>
+        <div class="input-group" style="justify-content: flex-end;">
+          <button type="submit" class="btn-primary">✨ 發布輕資源</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- 篩選按鈕區 -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">📋 全部</button>
+    <button class="filter-btn" data-filter="active">🟢 進行中 (active)</button>
+    <button class="filter-btn" data-filter="done">✅ 已完成 (done)</button>
+  </div>
+
+  <!-- 記錄列表區 -->
+  <div id="recordsListContainer" class="records-grid">
+    <!-- 動態渲染 -->
+  </div>
+</div>
+
+<script>
+  // ---------- Data Contract ----------
+  // 每筆 record 結構:
+  // {
+  //   id: string (唯一識別，使用 Date.now() + 隨機數)
+  //   createdAt: string (ISO 格式 new Date().toISOString())
+  //   status: 'active' | 'done'  (預設 active)
+  //   content: string (資源/物品描述)
+  //   category: string (文具/互借交換, 學習素材/無償共享, 輕文創/展示交換)
+  //   message: string (實名留言 + 交換意向)
+  //   contact: string (地點/聯絡方式，校園快速對接)
+  // }
+  // 欄位完全符合需求: id, createdAt, status, 內容(content), 分類(category), 留言(message)
+  // 外加 contact 強化校園交換體驗 (不影響核心規範)
+  // ---------- 全域變數 ----------
+  let records = [];            // 儲存所有紀錄
+  let currentFilter = "all";  // 'all', 'active', 'done'
+
+  // ---------- DOM 元素 ----------
+  const form = document.getElementById("resourceForm");
+  const contentInput = document.getElementById("contentInput");
+  const categorySelect = document.getElementById("categorySelect");
+  const messageInput = document.getElementById("messageInput");
+  const contactInput = document.getElementById("contactInput");
+  const container = document.getElementById("recordsListContainer");
+
+  // ========== 1. createRecord : 根據表單資料建立新 record object ==========
+  function createRecord(formData) {
+    // formData 預期為 { content, category, message, contact }
+    if (!formData.content || !formData.category || !formData.message) {
+      throw new Error("內容、分類、留言為必填欄位");
+    }
+    return {
+      id: Date.now() + "-" + Math.random().toString(36).substring(2, 8),
+      createdAt: new Date().toISOString(),
+      status: "active",                 // 預設 active
+      content: formData.content.trim(),
+      category: formData.category,
+      message: formData.message.trim(),
+      contact: formData.contact ? formData.contact.trim() : "未提供具體地點",
+    };
+  }
+
+  // ========== 2. saveData : 新增一筆 record 到 records array 並存入 localStorage ==========
+  function saveData(record) {
+    // 新增至全域陣列
+    records.push(record);
+    // 寫入 localStorage (key 固定 'records')
+    localStorage.setItem("records", JSON.stringify(records));
+    // 新增後重新根據當前 filter 刷新畫面
+    renderFilteredList();
+  }
+
+  // ========== 3. loadData : 從 localStorage 讀取 records array，無資料回傳 [] ==========
+  function loadData() {
+    const stored = localStorage.getItem("records");
+    if (stored) {
+      try {
+        records = JSON.parse(stored);
+        // 確保舊資料結構完整 (若有缺欄位可補，但不會寫示範資料)
+        if (!Array.isArray(records)) records = [];
+      } catch(e) { records = []; }
+    } else {
+      records = [];
+    }
+    return records;
+  }
+
+  // ========== 4. updateRecord : 更新單筆 record (id, changes) 並存入 localStorage ==========
+  function updateRecord(id, changes) {
+    const index = records.findIndex(r => r.id === id);
+    if (index === -1) return false;
+    // 更新物件 (合併 changes)
+    records[index] = { ...records[index], ...changes };
+    // 立即保存到 localStorage
+    localStorage.setItem("records", JSON.stringify(records));
+    // 更新畫面 (根據當前 filter)
+    renderFilteredList();
+    return true;
+  }
+
+  // ========== 輔助: 依照 currentFilter 過濾 records 並呼叫 renderList ==========
+  function renderFilteredList() {
+    let filteredRecords = [];
+    if (currentFilter === "active") {
+      filteredRecords = records.filter(r => r.status === "active");
+    } else if (currentFilter === "done") {
+      filteredRecords = records.filter(r => r.status === "done");
+    } else {
+      filteredRecords = [...records]; // all
+    }
+    renderList(filteredRecords);
+  }
+
+  // ========== 5. renderList : 把傳入的 records 陣列顯示至頁面 ==========
+  function renderList(recordsToShow) {
+    if (!container) return;
+    if (!recordsToShow.length) {
+      container.innerHTML = `<div class="empty-msg">📭 目前沒有資源，快點發布第一筆交換吧～</div>`;
+      return;
+    }
+
+    let html = "";
+    for (let record of recordsToShow) {
+      // 決定狀態顯示文字及額外class
+      const isDone = record.status === "done";
+      const statusText = isDone ? "✅ 已完成" : "🔄 進行中";
+      const statusClass = isDone ? "status-done-badge" : "status-active";
+      const cardDoneClass = isDone ? "status-done" : "";
+      
+      // 格式化時間 (顯示本地日期)
+      const dateObj = new Date(record.createdAt);
+      const formattedDate = `${dateObj.getFullYear()}/${dateObj.getMonth()+1}/${dateObj.getDate()} ${dateObj.getHours().toString().padStart(2,'0')}:${dateObj.getMinutes().toString().padStart(2,'0')}`;
+      
+      // 分類圖示輔助
+      let categoryIcon = "📎";
+      if (record.category.includes("文具")) categoryIcon = "✏️";
+      else if (record.category.includes("學習素材")) categoryIcon = "📘";
+      else if (record.category.includes("輕文創")) categoryIcon = "🎨";
+      
+      html += `
+        <div class="record-card ${cardDoneClass}" data-id="${record.id}">
+          <div class="card-header">
+            <span class="badge-category">${categoryIcon} ${escapeHtml(record.category)}</span>
+            <span class="status-badge ${statusClass}">${statusText}</span>
+          </div>
+          <div class="card-content">
+            <strong>📌 內容：</strong>${escapeHtml(record.content)}
+          </div>
+          <div class="detail-row">
+            <span>🆔 ID: ${escapeHtml(record.id.slice(-8))}</span>
+            <span>📅 ${formattedDate}</span>
+            <span>📍 ${escapeHtml(record.contact)}</span>
+          </div>
+          <div class="message-box">
+            💬 留言：${escapeHtml(record.message)}
+          </div>
+          <div class="card-footer">
+            <span class="timestamp">建立於 ${formattedDate}</span>
+            <button class="toggle-btn" data-id="${record.id}" data-status="${record.status}">
+              ${record.status === "active" ? "✓ 標記為 done" : "↻ 重新啟用 (active)"}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+
+    // 綁定每個切換狀態按鈕事件 (使用事件委託也可，直接綁定)
+    const allToggleBtns = document.querySelectorAll(".toggle-btn");
+    allToggleBtns.forEach(btn => {
+      btn.removeEventListener("click", handleToggleClick);
+      btn.addEventListener("click", handleToggleClick);
+    });
+  }
+
+  // 切換按鈕的處理函式
+  function handleToggleClick(e) {
+    e.stopPropagation();
+    const btn = e.currentTarget;
+    const id = btn.getAttribute("data-id");
+    const currentStatus = btn.getAttribute("data-status");
+    if (!id) return;
+    const newStatus = currentStatus === "active" ? "done" : "active";
+    // 使用 updateRecord 更新狀態 (符合職責)
+    updateRecord(id, { status: newStatus });
+  }
+
+  // 簡易防XSS輔助
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  // ---------- 表單提交處理 ----------
+  function onFormSubmit(event) {
+    event.preventDefault();
+    // 取得表單值
+    const content = contentInput.value.trim();
+    const category = categorySelect.value;
+    const message = messageInput.value.trim();
+    const contact = contactInput.value.trim();
+
+    if (!content) {
+      alert("請填寫資源內容");
+      return;
+    }
+    if (!message) {
+      alert("請填寫實名留言 (希望怎麼交換 / 需求)");
+      return;
+    }
+    try {
+      const formData = { content, category, message, contact };
+      const newRecord = createRecord(formData);
+      saveData(newRecord);     // saveData 負責新增紀錄並儲存 + 重新渲染
+      // 清空表單部分欄位 (保留分類預設，清空內容/留言/聯絡方式)
+      contentInput.value = "";
+      messageInput.value = "";
+      contactInput.value = "";
+      // 分類保留預設第一項
+      categorySelect.selectedIndex = 0;
+      // 焦點回到內容
+      contentInput.focus();
+    } catch (err) {
+      alert("發布失敗：" + err.message);
+    }
+  }
+
+  // ---------- 篩選邏輯 & 綁定 ----------
+  function initFilterButtons() {
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const filterValue = btn.getAttribute("data-filter");
+        if (!filterValue) return;
+        // 更新 active 樣式
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        // 更新 currentFilter
+        currentFilter = filterValue;
+        // 重新渲染列表 (依賴全局 records 及 filter)
+        renderFilteredList();
+      });
+    });
+  }
+
+  // ---------- 初始化載入資料 & 渲染頁面 ----------
+  function init() {
+    loadData();               // 從 localStorage 讀取 records 全域陣列
+    renderFilteredList();    // 依照 currentFilter (預設 'all') 繪製
+    initFilterButtons();     // 監聽篩選器
+    form.addEventListener("submit", onFormSubmit);
+  }
+
+  // 啟動應用程式
+  init();
+</script>
+</body>
+</html>
