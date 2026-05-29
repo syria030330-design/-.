@@ -19,61 +19,63 @@
     }
 
     .container {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* 標題區 */
+    /* 標題區 - 字體加大，間距增加 */
     .hero {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
     .hero h1 {
-      font-size: 2rem;
+      font-size: 2.4rem;
       background: linear-gradient(135deg, #2b5e3b, #3b8c4a);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       letter-spacing: -0.3px;
+      margin-bottom: 0.5rem;
     }
     .hero p {
+      font-size: 1.1rem;
       color: #4a627a;
       margin-top: 0.5rem;
       font-weight: 500;
     }
 
-    /* 新增表單卡片 */
+    /* 新增表單卡片 - 增加內外間距 */
     .form-card {
       background: white;
-      border-radius: 28px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      padding: 1.8rem;
-      margin-bottom: 2rem;
+      border-radius: 32px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      padding: 2rem 2rem 2rem 2rem;
+      margin-bottom: 2.5rem;
       border: 1px solid #e9edf2;
       transition: box-shadow 0.2s;
     }
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
       align-items: end;
     }
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
     .input-group label {
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #2c5a3b;
       letter-spacing: 0.3px;
     }
     .input-group input, .input-group select, .input-group textarea {
-      padding: 0.7rem 1rem;
+      padding: 0.8rem 1rem;
       border: 1.5px solid #e2e8f0;
-      border-radius: 18px;
-      font-size: 0.9rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
       background: #fefefe;
       transition: 0.2s;
       outline: none;
@@ -84,40 +86,148 @@
       box-shadow: 0 0 0 3px rgba(59,140,74,0.1);
     }
     textarea {
-      min-height: 70px;
+      min-height: 80px;
     }
     .btn-primary {
       background: #2b5e3b;
       color: white;
       border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 40px;
+      padding: 0.85rem 1.8rem;
+      border-radius: 48px;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.2s;
       margin-top: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
     .btn-primary:hover {
       background: #1f452c;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
 
-    /* 篩選按鈕列 */
+    /* 搜尋 + 排序列 - 增加間距 */
+    .search-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .search-wrapper {
+      flex: 2;
+      min-width: 220px;
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      pointer-events: none;
+      color: #8ba0b5;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 3rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 60px;
+      font-size: 1rem;
+      background: white;
+      transition: 0.2s;
+      outline: none;
+    }
+    #searchInput:focus {
+      border-color: #3b8c4a;
+      box-shadow: 0 0 0 3px rgba(59,140,74,0.1);
+    }
+    .sort-control {
+      display: flex;
+      gap: 0.6rem;
+      background: white;
+      padding: 0.3rem;
+      border-radius: 60px;
+      border: 1.5px solid #e2e8f0;
+    }
+    .sort-btn {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #4a627a;
+    }
+    .sort-btn.active {
+      background: #2b5e3b;
+      color: white;
+      box-shadow: 0 2px 6px rgba(43,94,59,0.2);
+    }
+    .sort-btn:hover:not(.active) {
+      background: #e9ecef;
+    }
+
+    /* 日期過濾區 - 增加間距與圓潤感 */
+    .date-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: flex-end;
+      background: #f8fafc;
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      margin-bottom: 1.8rem;
+    }
+    .date-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .date-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #2c5a3b;
+    }
+    .date-group input {
+      padding: 0.6rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      background: white;
+    }
+    .clear-date-btn {
+      background: #e2e8f0;
+      border: none;
+      padding: 0.55rem 1.5rem;
+      border-radius: 48px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .clear-date-btn:hover {
+      background: #cbd5e1;
+    }
+
+    /* 篩選按鈕列 - 間距加大 */
     .filter-bar {
       display: flex;
-      gap: 1rem;
+      gap: 1.2rem;
       flex-wrap: wrap;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
       justify-content: center;
     }
     .filter-btn {
       background: #edf2f7;
       border: none;
-      padding: 0.5rem 1.8rem;
-      border-radius: 40px;
+      padding: 0.7rem 2rem;
+      border-radius: 48px;
       font-weight: 600;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.2s;
       color: #2d3e50;
@@ -125,29 +235,29 @@
     .filter-btn.active {
       background: #2b5e3b;
       color: white;
-      box-shadow: 0 4px 8px rgba(43,94,59,0.2);
+      box-shadow: 0 4px 10px rgba(43,94,59,0.2);
     }
     .filter-btn:hover:not(.active) {
       background: #dce5ef;
+      transform: translateY(-1px);
     }
 
-    /* 資源卡片列表 */
+    /* 資源卡片列表 - 間距加大，卡片更舒適 */
     .records-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
     }
     .record-card {
       background: white;
-      border-radius: 28px;
-      padding: 1.2rem 1.5rem;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      border-radius: 32px;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
       transition: 0.2s;
       border-left: 8px solid #84b88c;
-      border-left-color: #84b88c;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 1rem;
     }
     .record-card.status-done {
       opacity: 0.75;
@@ -160,23 +270,23 @@
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       border-bottom: 1px dashed #e9edf2;
-      padding-bottom: 8px;
+      padding-bottom: 12px;
     }
     .badge-category {
       background: #eef2ff;
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.7rem;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #1f4f2d;
     }
     .status-badge {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: bold;
-      padding: 4px 12px;
-      border-radius: 30px;
+      padding: 5px 14px;
+      border-radius: 40px;
     }
     .status-active {
       background: #dff9e6;
@@ -188,32 +298,32 @@
       text-decoration: line-through;
     }
     .card-content {
-      font-size: 0.95rem;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.45;
       color: #1f2937;
       font-weight: 500;
       word-break: break-word;
     }
     .detail-row {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #4b5563;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
       background: #f8fafc;
-      padding: 8px 10px;
-      border-radius: 18px;
+      padding: 10px 14px;
+      border-radius: 24px;
     }
     .detail-row span {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
     .message-box {
       background: #f1f5f9;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
+      padding: 10px 14px;
+      border-radius: 24px;
+      font-size: 0.9rem;
       color: #0c4e2e;
       font-style: italic;
       border-left: 3px solid #4caf7a;
@@ -222,14 +332,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 6px;
+      margin-top: 8px;
     }
     .toggle-btn {
       background: none;
       border: 1px solid #cbd5e1;
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-size: 0.75rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.2s;
@@ -240,19 +350,228 @@
       border-color: #2b5e3b;
     }
     .timestamp {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: #7c8ba0;
     }
+
+    /* 留言區樣式 - 間距優化 */
+    .comment-section {
+      margin-top: 0.75rem;
+      border-top: 1px solid #e9edf2;
+      padding-top: 0.75rem;
+    }
+    .comment-toggle {
+      background: none;
+      border: none;
+      color: #3b8c4a;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 40px;
+      transition: background 0.2s;
+      width: fit-content;
+    }
+    .comment-toggle:hover {
+      background: #eef2ff;
+    }
+    .comment-panel {
+      margin-top: 12px;
+      background: #fefce8;
+      border-radius: 28px;
+      padding: 16px;
+      border: 1px solid #e2e8f0;
+      display: none;
+    }
+    .comment-panel.open {
+      display: block;
+    }
+    .comment-list {
+      max-height: 280px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .comment-item {
+      background: white;
+      padding: 12px 14px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      border-left: 3px solid #84b88c;
+      word-break: break-word;
+    }
+    .comment-meta {
+      font-size: 0.75rem;
+      color: #6c757d;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .exchange-btn {
+      background: #f0f4f9;
+      border: 1px solid #cbd5e1;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #2b5e3b;
+    }
+    .exchange-btn:hover {
+      background: #e2e8f0;
+    }
+    .exchange-done {
+      background: #e6f4ea;
+      color: #2e7d32;
+      font-size: 0.7rem;
+      padding: 5px 12px;
+      border-radius: 40px;
+      display: inline-block;
+    }
+    .comment-input-group {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .comment-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 48px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .comment-input:focus {
+      border-color: #3b8c4a;
+    }
+    .add-comment-btn {
+      background: #2b5e3b;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 48px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .add-comment-btn:hover {
+      background: #1f452c;
+    }
+
     .empty-msg {
       text-align: center;
-      padding: 3rem;
+      padding: 3.5rem;
       background: white;
-      border-radius: 42px;
+      border-radius: 48px;
       color: #5b6e8c;
+      font-size: 1rem;
     }
-    @media (max-width: 720px) {
-      body { padding: 1rem; }
-      .records-grid { grid-template-columns: 1fr; }
+
+    /* 手機適配 - media query */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .form-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .form-grid {
+        gap: 1rem;
+      }
+      .input-group label {
+        font-size: 0.8rem;
+      }
+      .input-group input, .input-group select, .input-group textarea {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+      }
+      .btn-primary {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      .search-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+      }
+      .sort-control {
+        justify-content: center;
+      }
+      .date-filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 32px;
+        padding: 1rem;
+      }
+      .filter-bar {
+        gap: 0.8rem;
+      }
+      .filter-btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      .records-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .record-card {
+        padding: 1rem 1.2rem;
+      }
+      .detail-row {
+        gap: 10px;
+        font-size: 0.75rem;
+      }
+      .message-box {
+        font-size: 0.85rem;
+      }
+      .comment-panel {
+        padding: 12px;
+      }
+      .comment-input-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .comment-input {
+        width: 100%;
+      }
+      .add-comment-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* 超小螢幕進一步優化 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -294,7 +613,32 @@
     </form>
   </div>
 
-  <!-- 篩選按鈕區 -->
+  <!-- 搜尋列 + 排序按鈕 -->
+  <div class="search-section">
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜尋內容、留言或分類... (例如: 筆記, 貼紙, 文具)">
+    </div>
+    <div class="sort-control" id="sortControl">
+      <button class="sort-btn active" data-sort="desc">🕒 最新優先</button>
+      <button class="sort-btn" data-sort="asc">⏫ 最早優先</button>
+    </div>
+  </div>
+
+  <!-- 日期範圍過濾 -->
+  <div class="date-filter-row">
+    <div class="date-group">
+      <label>📅 從此日期開始</label>
+      <input type="date" id="dateFromInput" value="">
+    </div>
+    <div class="date-group">
+      <label>📅 到這個日期結束</label>
+      <input type="date" id="dateToInput" value="">
+    </div>
+    <button class="clear-date-btn" id="clearDateBtn">🧹 清除日期範圍</button>
+  </div>
+
+  <!-- 篩選按鈕區 (狀態) -->
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">📋 全部</button>
     <button class="filter-btn" data-filter="active">🟢 進行中 (active)</button>
@@ -302,76 +646,151 @@
   </div>
 
   <!-- 記錄列表區 -->
-  <div id="recordsListContainer" class="records-grid">
-    <!-- 動態渲染 -->
-  </div>
+  <div id="recordsListContainer" class="records-grid"></div>
 </div>
 
 <script>
-  // ---------- Backend Connector ----------
+  // ---------- Backend Connector (固定) ----------
   const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTOyq7ziNtzX4IHTh0Q2Qsj0eKtIEWg5c2MDv8SXkZgImwEb1lNj51uuBInRPy1csAmw/exec";
 
   // ---------- Data Contract ----------
-  // 每筆 record 結構:
-  // {
-  //   id: string, createdAt: string, status: 'active'|'done',
-  //   content: string, category: string, message: string, contact: string
-  // }
-  // ---------- 全域變數 ----------
-  let records = [];            // 儲存所有紀錄
-  let currentFilter = "all";  // 'all', 'active', 'done'
+  // 每筆 record: { id, createdAt, status, content, category, message, contact }
 
-  // ---------- DOM 元素 ----------
+  let records = [];
+  let currentFilter = "all";
+  let currentKeyword = "";
+  let sortDirection = "desc";
+  let dateFrom = null;
+  let dateTo = null;
+
+  // ---------- 留言資料 (本地儲存，不影響 backend) ----------
+  let commentsDB = {};
+
   const form = document.getElementById("resourceForm");
   const contentInput = document.getElementById("contentInput");
   const categorySelect = document.getElementById("categorySelect");
   const messageInput = document.getElementById("messageInput");
   const contactInput = document.getElementById("contactInput");
   const container = document.getElementById("recordsListContainer");
+  const searchInput = document.getElementById("searchInput");
+  const dateFromInput = document.getElementById("dateFromInput");
+  const dateToInput = document.getElementById("dateToInput");
+  const clearDateBtn = document.getElementById("clearDateBtn");
 
-  // ========== 新增: 從 Google Sheet 讀取資料 ==========
+  // ========== 留言功能 (純前端) ==========
+  function loadCommentsFromStorage() {
+    const stored = localStorage.getItem("post_comments");
+    if (stored) {
+      try { commentsDB = JSON.parse(stored); } catch(e) { commentsDB = {}; }
+    } else { commentsDB = {}; }
+  }
+  function saveCommentsToStorage() {
+    localStorage.setItem("post_comments", JSON.stringify(commentsDB));
+  }
+  function getCommentsByPostId(postId) {
+    return commentsDB[postId] || [];
+  }
+  function addCommentToPost(postId, author, text) {
+    if (!author.trim()) author = "匿名同學";
+    if (!text.trim()) return;
+    if (!commentsDB[postId]) commentsDB[postId] = [];
+    const newComment = {
+      id: Date.now() + "-" + Math.random().toString(36).substring(2, 6),
+      author: author.trim().substring(0, 20),
+      text: text.trim(),
+      createdAt: new Date().toISOString(),
+      exchanged: false
+    };
+    commentsDB[postId].push(newComment);
+    saveCommentsToStorage();
+    renderFilteredList();
+  }
+  function markExchangeRequest(postId, commentId) {
+    const comments = commentsDB[postId];
+    if (!comments) return false;
+    const comment = comments.find(c => c.id === commentId);
+    if (comment && !comment.exchanged) {
+      comment.exchanged = true;
+      saveCommentsToStorage();
+      renderFilteredList();
+      return true;
+    }
+    return false;
+  }
+
+  // ========== 過濾 + 排序 (不變) ==========
+  function getFilteredAndSortedRecords() {
+    let filtered = records;
+    if (currentFilter === "active") filtered = filtered.filter(r => r.status === "active");
+    else if (currentFilter === "done") filtered = filtered.filter(r => r.status === "done");
+    if (currentKeyword.trim()) {
+      const kw = currentKeyword.trim().toLowerCase();
+      filtered = filtered.filter(r =>
+        r.content.toLowerCase().includes(kw) ||
+        r.message.toLowerCase().includes(kw) ||
+        r.category.toLowerCase().includes(kw)
+      );
+    }
+    if (dateFrom || dateTo) {
+      filtered = filtered.filter(r => {
+        const rd = new Date(r.createdAt);
+        const rdOnly = new Date(rd.getFullYear(), rd.getMonth(), rd.getDate());
+        if (dateFrom) {
+          const fd = new Date(dateFrom);
+          const fdOnly = new Date(fd.getFullYear(), fd.getMonth(), fd.getDate());
+          if (rdOnly < fdOnly) return false;
+        }
+        if (dateTo) {
+          const td = new Date(dateTo);
+          const tdOnly = new Date(td.getFullYear(), td.getMonth(), td.getDate());
+          if (rdOnly > tdOnly) return false;
+        }
+        return true;
+      });
+    }
+    filtered.sort((a, b) => {
+      const ta = new Date(a.createdAt).getTime();
+      const tb = new Date(b.createdAt).getTime();
+      return sortDirection === "desc" ? tb - ta : ta - tb;
+    });
+    return filtered;
+  }
+
+  function renderFilteredList() {
+    const toShow = getFilteredAndSortedRecords();
+    renderList(toShow);
+  }
+
+  // ========== Google Sheet 同步 (完全保留原職責) ==========
   async function fetchRecordsFromSheet() {
     const response = await fetch(APPS_SCRIPT_URL);
     const data = await response.json();
-    if (!data.ok) throw new Error(data.error || "Failed to fetch from sheet");
-    // 正規化每一筆 record
-    return (data.records || []).map(normalizeRecord);
+    if (!data.ok) throw new Error(data.error || "Failed to fetch");
+    return (data.records || []).map(r => ({
+      id: r.id || "",
+      createdAt: r.createdAt || new Date().toISOString(),
+      status: r.status || "active",
+      content: r.content || "",
+      category: r.category || "",
+      message: r.message || "",
+      contact: r.contact || "未提供具體地點"
+    }));
   }
 
-  // ========== 新增: 正規化單筆 record (確保欄位齊全) ==========
-  function normalizeRecord(record) {
-    return {
-      id: record.id || "",
-      createdAt: record.createdAt || new Date().toISOString(),
-      status: record.status || "active",
-      content: record.content || "",
-      category: record.category || "",
-      message: record.message || "",
-      contact: record.contact || "未提供具體地點"
-    };
-  }
-
-  // ========== 新增: 同步到 Google Sheet (POST) ==========
   async function syncToSheet(payload) {
     try {
-      const response = await fetch(APPS_SCRIPT_URL, {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
       });
-      const result = await response.json();
-      if (!result.ok) console.warn("Sync to sheet failed:", result.error);
-      return result;
-    } catch (err) {
-      console.warn("Network error while syncing to sheet:", err);
-    }
+      const data = await res.json();
+      if (!data.ok) console.warn("Sync failed:", data.error);
+    } catch(err) { console.warn("Network error:", err); }
   }
 
-  // ========== 1. createRecord : 根據表單資料建立新 record object ==========
   function createRecord(formData) {
-    if (!formData.content || !formData.category || !formData.message) {
-      throw new Error("內容、分類、留言為必填欄位");
-    }
+    if (!formData.content || !formData.category || !formData.message) throw new Error("請填寫完整");
     return {
       id: Date.now() + "-" + Math.random().toString(36).substring(2, 8),
       createdAt: new Date().toISOString(),
@@ -383,202 +802,238 @@
     };
   }
 
-  // ========== 2. saveData : 新增 record 到本地 + localStorage，並同步到 Sheet ==========
   async function saveData(record) {
-    // 本地新增
     records.push(record);
     localStorage.setItem("records", JSON.stringify(records));
     renderFilteredList();
-    // 背景同步到 Google Sheet
     await syncToSheet({ action: "create", record });
   }
 
-  // ========== 3. loadData : 優先從 Sheet 讀取，失敗則 fallback 到 localStorage ==========
   async function loadData() {
     try {
       const sheetRecords = await fetchRecordsFromSheet();
-      if (sheetRecords && sheetRecords.length >= 0) {
+      if (sheetRecords) {
         records = sheetRecords;
         localStorage.setItem("records", JSON.stringify(records));
         return records;
       }
-    } catch (err) {
-      console.warn("Cannot fetch from sheet, fallback to localStorage:", err);
-    }
-    // fallback: 讀取 localStorage
+    } catch(e) { console.warn("Sheet fallback", e); }
     const stored = localStorage.getItem("records");
     if (stored) {
-      try {
-        records = JSON.parse(stored);
-        if (!Array.isArray(records)) records = [];
-      } catch(e) { records = []; }
-    } else {
-      records = [];
-    }
+      try { records = JSON.parse(stored); if (!Array.isArray(records)) records = []; } catch(e) { records = []; }
+    } else { records = []; }
     return records;
   }
 
-  // ========== 4. updateRecord : 更新本地 record + localStorage，並同步到 Sheet ==========
   async function updateRecord(id, changes) {
-    const index = records.findIndex(r => r.id === id);
-    if (index === -1) return false;
-    records[index] = { ...records[index], ...changes };
+    const idx = records.findIndex(r => r.id === id);
+    if (idx === -1) return false;
+    records[idx] = { ...records[idx], ...changes };
     localStorage.setItem("records", JSON.stringify(records));
     renderFilteredList();
-    // 背景同步到 Google Sheet
     await syncToSheet({ action: "update", id, changes });
     return true;
   }
 
-  // ========== 輔助: 依照 currentFilter 過濾 records 並呼叫 renderList ==========
-  function renderFilteredList() {
-    let filteredRecords = [];
-    if (currentFilter === "active") {
-      filteredRecords = records.filter(r => r.status === "active");
-    } else if (currentFilter === "done") {
-      filteredRecords = records.filter(r => r.status === "done");
-    } else {
-      filteredRecords = [...records];
-    }
-    renderList(filteredRecords);
-  }
-
-  // ========== 5. renderList : 把傳入的 records 陣列顯示至頁面 ==========
+  // ========== 渲染 (含留言區與交換按鈕) ==========
   function renderList(recordsToShow) {
     if (!container) return;
     if (!recordsToShow.length) {
-      container.innerHTML = `<div class="empty-msg">📭 目前沒有資源，快點發布第一筆交換吧～</div>`;
+      container.innerHTML = `<div class="empty-msg">📭 沒有符合的資源，試試不同關鍵字或日期範圍～</div>`;
       return;
     }
-
     let html = "";
-    for (let record of recordsToShow) {
-      const isDone = record.status === "done";
+    for (let r of recordsToShow) {
+      const isDone = r.status === "done";
       const statusText = isDone ? "✅ 已完成" : "🔄 進行中";
       const statusClass = isDone ? "status-done-badge" : "status-active";
       const cardDoneClass = isDone ? "status-done" : "";
-      
-      const dateObj = new Date(record.createdAt);
+      const dateObj = new Date(r.createdAt);
       const formattedDate = `${dateObj.getFullYear()}/${dateObj.getMonth()+1}/${dateObj.getDate()} ${dateObj.getHours().toString().padStart(2,'0')}:${dateObj.getMinutes().toString().padStart(2,'0')}`;
-      
       let categoryIcon = "📎";
-      if (record.category.includes("文具")) categoryIcon = "✏️";
-      else if (record.category.includes("學習素材")) categoryIcon = "📘";
-      else if (record.category.includes("輕文創")) categoryIcon = "🎨";
-      
+      if (r.category.includes("文具")) categoryIcon = "✏️";
+      else if (r.category.includes("學習素材")) categoryIcon = "📘";
+      else if (r.category.includes("輕文創")) categoryIcon = "🎨";
+      const commentSectionId = `comment-${r.id.replace(/[^a-zA-Z0-9]/g, '_')}`;
       html += `
-        <div class="record-card ${cardDoneClass}" data-id="${record.id}">
+        <div class="record-card ${cardDoneClass}" data-id="${r.id}">
           <div class="card-header">
-            <span class="badge-category">${categoryIcon} ${escapeHtml(record.category)}</span>
+            <span class="badge-category">${categoryIcon} ${escapeHtml(r.category)}</span>
             <span class="status-badge ${statusClass}">${statusText}</span>
           </div>
-          <div class="card-content">
-            <strong>📌 內容：</strong>${escapeHtml(record.content)}
-          </div>
+          <div class="card-content"><strong>📌 內容：</strong>${escapeHtml(r.content)}</div>
           <div class="detail-row">
-            <span>🆔 ID: ${escapeHtml(record.id.slice(-8))}</span>
+            <span>🆔 ID: ${escapeHtml(r.id.slice(-8))}</span>
             <span>📅 ${formattedDate}</span>
-            <span>📍 ${escapeHtml(record.contact)}</span>
+            <span>📍 ${escapeHtml(r.contact)}</span>
           </div>
-          <div class="message-box">
-            💬 留言：${escapeHtml(record.message)}
-          </div>
+          <div class="message-box">💬 留言：${escapeHtml(r.message)}</div>
           <div class="card-footer">
             <span class="timestamp">建立於 ${formattedDate}</span>
-            <button class="toggle-btn" data-id="${record.id}" data-status="${record.status}">
-              ${record.status === "active" ? "✓ 標記為 done" : "↻ 重新啟用 (active)"}
+            <button class="toggle-btn" data-id="${r.id}" data-status="${r.status}">
+              ${r.status === "active" ? "✓ 標記為 done" : "↻ 重新啟用"}
             </button>
+          </div>
+          <div class="comment-section">
+            <button class="comment-toggle" data-target="${commentSectionId}">💬 留言討論 (點擊展開/收合)</button>
+            <div id="${commentSectionId}" class="comment-panel">
+              <div class="comment-list" id="${commentSectionId}-list"></div>
+              <div class="comment-input-group">
+                <input type="text" class="comment-input" placeholder="暱稱" id="${commentSectionId}-name" style="width:100px">
+                <input type="text" class="comment-input" placeholder="寫下你的回應..." id="${commentSectionId}-text">
+                <button class="add-comment-btn" data-post-id="${r.id}" data-target-id="${commentSectionId}">發送</button>
+              </div>
+            </div>
           </div>
         </div>
       `;
     }
     container.innerHTML = html;
 
-    const allToggleBtns = document.querySelectorAll(".toggle-btn");
-    allToggleBtns.forEach(btn => {
+    // 綁定狀態切換
+    document.querySelectorAll(".toggle-btn").forEach(btn => {
       btn.removeEventListener("click", handleToggleClick);
       btn.addEventListener("click", handleToggleClick);
     });
-  }
+    // 摺疊按鈕
+    document.querySelectorAll(".comment-toggle").forEach(btn => {
+      btn.removeEventListener("click", toggleCommentPanel);
+      btn.addEventListener("click", toggleCommentPanel);
+    });
+    // 新增留言按鈕
+    document.querySelectorAll(".add-comment-btn").forEach(btn => {
+      btn.removeEventListener("click", handleAddComment);
+      btn.addEventListener("click", handleAddComment);
+    });
 
-  // 切換按鈕的處理函式
-  function handleToggleClick(e) {
-    e.stopPropagation();
-    const btn = e.currentTarget;
-    const id = btn.getAttribute("data-id");
-    const currentStatus = btn.getAttribute("data-status");
-    if (!id) return;
-    const newStatus = currentStatus === "active" ? "done" : "active";
-    updateRecord(id, { status: newStatus });
-  }
-
-  // 簡易防XSS輔助
-  function escapeHtml(str) {
-    if (!str) return "";
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-      return c;
+    // 載入各貼文留言
+    for (let r of recordsToShow) {
+      const postId = r.id;
+      const listId = `comment-${postId.replace(/[^a-zA-Z0-9]/g, '_')}-list`;
+      const listContainer = document.getElementById(listId);
+      if (listContainer) {
+        const comments = getCommentsByPostId(postId);
+        if (comments.length === 0) {
+          listContainer.innerHTML = `<div style="color:#aaa; text-align:center;">還沒有留言</div>`;
+        } else {
+          let itemsHtml = "";
+          for (let c of comments) {
+            const time = new Date(c.createdAt).toLocaleString();
+            const exchangeBtn = c.exchanged 
+              ? `<span class="exchange-done">✓ 已發起交換意向</span>`
+              : `<button class="exchange-btn" data-post-id="${postId}" data-comment-id="${c.id}">🤝 與你交換</button>`;
+            itemsHtml += `
+              <div class="comment-item">
+                <div class="comment-meta">
+                  <span><strong>${escapeHtml(c.author)}</strong> · ${time}</span>
+                  ${exchangeBtn}
+                </div>
+                <div>${escapeHtml(c.text)}</div>
+              </div>
+            `;
+          }
+          listContainer.innerHTML = itemsHtml;
+        }
+      }
+    }
+    // 綁定交換按鈕
+    document.querySelectorAll(".exchange-btn").forEach(btn => {
+      btn.removeEventListener("click", handleExchangeClick);
+      btn.addEventListener("click", handleExchangeClick);
     });
   }
 
-  // ---------- 表單提交處理 ----------
-  function onFormSubmit(event) {
-    event.preventDefault();
+  // 事件處理
+  function toggleCommentPanel(e) {
+    const target = document.getElementById(e.currentTarget.getAttribute("data-target"));
+    if (target) target.classList.toggle("open");
+  }
+  function handleAddComment(e) {
+    const btn = e.currentTarget;
+    const postId = btn.getAttribute("data-post-id");
+    const targetId = btn.getAttribute("data-target-id");
+    const name = document.getElementById(`${targetId}-name`)?.value.trim() || "匿名同學";
+    const text = document.getElementById(`${targetId}-text`)?.value.trim();
+    if (!text) { alert("請輸入留言"); return; }
+    addCommentToPost(postId, name, text);
+    document.getElementById(`${targetId}-text`).value = "";
+    if (document.getElementById(`${targetId}-name`)) document.getElementById(`${targetId}-name`).value = "";
+  }
+  function handleExchangeClick(e) {
+    const btn = e.currentTarget;
+    const postId = btn.getAttribute("data-post-id");
+    const commentId = btn.getAttribute("data-comment-id");
+    if (postId && commentId) markExchangeRequest(postId, commentId);
+  }
+  function handleToggleClick(e) {
+    const btn = e.currentTarget;
+    const id = btn.getAttribute("data-id");
+    const cur = btn.getAttribute("data-status");
+    if (!id) return;
+    updateRecord(id, { status: cur === "active" ? "done" : "active" });
+  }
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+  }
+
+  // 表單提交
+  function onFormSubmit(e) {
+    e.preventDefault();
     const content = contentInput.value.trim();
     const category = categorySelect.value;
     const message = messageInput.value.trim();
     const contact = contactInput.value.trim();
-
-    if (!content) {
-      alert("請填寫資源內容");
-      return;
-    }
-    if (!message) {
-      alert("請填寫實名留言 (希望怎麼交換 / 需求)");
-      return;
-    }
+    if (!content || !message) { alert("請填寫資源內容與實名留言"); return; }
     try {
-      const formData = { content, category, message, contact };
-      const newRecord = createRecord(formData);
+      const newRecord = createRecord({ content, category, message, contact });
       saveData(newRecord);
       contentInput.value = "";
       messageInput.value = "";
       contactInput.value = "";
       categorySelect.selectedIndex = 0;
       contentInput.focus();
-    } catch (err) {
-      alert("發布失敗：" + err.message);
-    }
+    } catch(err) { alert(err.message); }
   }
 
-  // ---------- 篩選邏輯 & 綁定 ----------
-  function initFilterButtons() {
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const filterValue = btn.getAttribute("data-filter");
-        if (!filterValue) return;
-        filterBtns.forEach(b => b.classList.remove("active"));
+  // 初始化篩選器、監聽
+  function initFilters() {
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-filter");
+        if (!val) return;
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        currentFilter = filterValue;
+        currentFilter = val;
         renderFilteredList();
       });
     });
+    searchInput.addEventListener("input", e => { currentKeyword = e.target.value; renderFilteredList(); });
+    document.querySelectorAll(".sort-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-sort");
+        sortDirection = val === "desc" ? "desc" : "asc";
+        document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderFilteredList();
+      });
+    });
+    dateFromInput.addEventListener("change", () => { dateFrom = dateFromInput.value || null; renderFilteredList(); });
+    dateToInput.addEventListener("change", () => { dateTo = dateToInput.value || null; renderFilteredList(); });
+    clearDateBtn.addEventListener("click", () => {
+      dateFromInput.value = ""; dateToInput.value = "";
+      dateFrom = null; dateTo = null;
+      renderFilteredList();
+    });
   }
 
-  // ---------- 初始化 (改為 async) ----------
   async function init() {
-    await loadData();               // 從 Sheet 或 localStorage 讀取
-    renderFilteredList();          // 顯示資料
-    initFilterButtons();           // 監聽篩選器
+    loadCommentsFromStorage();
+    await loadData();
+    renderFilteredList();
+    initFilters();
     form.addEventListener("submit", onFormSubmit);
   }
-
-  // 啟動應用程式
   init();
 </script>
 </body>
