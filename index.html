@@ -23,7 +23,7 @@
       margin: 0 auto;
     }
 
-    /* 標題區 - 字體加大，間距增加 */
+    /* 標題區 */
     .hero {
       text-align: center;
       margin-bottom: 3rem;
@@ -44,15 +44,57 @@
       font-weight: 500;
     }
 
-    /* 新增表單卡片 - 增加內外間距 */
+    /* 統計圖表卡片 */
+    .stats-card {
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      padding: 1.5rem 1rem 1rem 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      border: 1px solid #e9edf2;
+    }
+    .stats-card h3 {
+      font-size: 1.2rem;
+      color: #2c5a3b;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+      background: #fefefe;
+      border-radius: 28px;
+      margin: 0 auto;
+      display: block;
+    }
+    .stats-legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+
+    /* 新增表單卡片 */
     .form-card {
       background: white;
       border-radius: 32px;
       box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-      padding: 2rem 2rem 2rem 2rem;
+      padding: 2rem;
       margin-bottom: 2.5rem;
       border: 1px solid #e9edf2;
-      transition: box-shadow 0.2s;
     }
     .form-grid {
       display: grid;
@@ -69,7 +111,6 @@
       font-weight: 600;
       font-size: 0.9rem;
       color: #2c5a3b;
-      letter-spacing: 0.3px;
     }
     .input-group input, .input-group select, .input-group textarea {
       padding: 0.8rem 1rem;
@@ -106,7 +147,7 @@
       transform: translateY(-2px);
     }
 
-    /* 搜尋 + 排序列 - 增加間距 */
+    /* 搜尋 + 排序列 */
     .search-section {
       display: flex;
       flex-wrap: wrap;
@@ -171,7 +212,7 @@
       background: #e9ecef;
     }
 
-    /* 日期過濾區 - 增加間距與圓潤感 */
+    /* 日期過濾區 */
     .date-filter-row {
       display: flex;
       flex-wrap: wrap;
@@ -213,7 +254,7 @@
       background: #cbd5e1;
     }
 
-    /* 篩選按鈕列 - 間距加大 */
+    /* 篩選按鈕列 */
     .filter-bar {
       display: flex;
       gap: 1.2rem;
@@ -242,7 +283,7 @@
       transform: translateY(-1px);
     }
 
-    /* 資源卡片列表 - 間距加大，卡片更舒適 */
+    /* 資源卡片列表 */
     .records-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -354,7 +395,7 @@
       color: #7c8ba0;
     }
 
-    /* 留言區樣式 - 間距優化 */
+    /* 留言區樣式 */
     .comment-section {
       margin-top: 0.75rem;
       border-top: 1px solid #e9edf2;
@@ -372,7 +413,6 @@
       gap: 8px;
       padding: 8px 10px;
       border-radius: 40px;
-      transition: background 0.2s;
       width: fit-content;
     }
     .comment-toggle:hover {
@@ -478,100 +518,35 @@
       font-size: 1rem;
     }
 
-    /* 手機適配 - media query */
+    /* 手機適配 */
     @media (max-width: 768px) {
-      body {
-        padding: 1rem;
-      }
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero p {
-        font-size: 0.95rem;
-      }
-      .form-card {
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-      .form-grid {
-        gap: 1rem;
-      }
-      .input-group label {
-        font-size: 0.8rem;
-      }
-      .input-group input, .input-group select, .input-group textarea {
-        padding: 0.7rem 0.9rem;
-        font-size: 0.9rem;
-      }
-      .btn-primary {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      .search-section {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-      }
-      .sort-control {
-        justify-content: center;
-      }
-      .date-filter-row {
-        flex-direction: column;
-        align-items: stretch;
-        border-radius: 32px;
-        padding: 1rem;
-      }
-      .filter-bar {
-        gap: 0.8rem;
-      }
-      .filter-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.85rem;
-      }
-      .records-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-      }
-      .record-card {
-        padding: 1rem 1.2rem;
-      }
-      .detail-row {
-        gap: 10px;
-        font-size: 0.75rem;
-      }
-      .message-box {
-        font-size: 0.85rem;
-      }
-      .comment-panel {
-        padding: 12px;
-      }
-      .comment-input-group {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .comment-input {
-        width: 100%;
-      }
-      .add-comment-btn {
-        width: 100%;
-        text-align: center;
-      }
+      body { padding: 1rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 0.95rem; }
+      .form-card { padding: 1.5rem; margin-bottom: 1.5rem; }
+      .form-grid { gap: 1rem; }
+      .input-group label { font-size: 0.8rem; }
+      .input-group input, .input-group select, .input-group textarea { padding: 0.7rem 0.9rem; font-size: 0.9rem; }
+      .btn-primary { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+      .search-section { flex-direction: column; align-items: stretch; gap: 1rem; }
+      .sort-control { justify-content: center; }
+      .date-filter-row { flex-direction: column; align-items: stretch; border-radius: 32px; padding: 1rem; }
+      .filter-bar { gap: 0.8rem; }
+      .filter-btn { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+      .records-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .record-card { padding: 1rem 1.2rem; }
+      .detail-row { gap: 10px; font-size: 0.75rem; }
+      .message-box { font-size: 0.85rem; }
+      .comment-panel { padding: 12px; }
+      .comment-input-group { flex-direction: column; align-items: stretch; }
+      .comment-input { width: 100%; }
+      .add-comment-btn { width: 100%; text-align: center; }
+      canvas { width: 100%; height: auto; }
     }
-
-    /* 超小螢幕進一步優化 */
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-      .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .card-footer {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-      }
+      .hero h1 { font-size: 1.5rem; }
+      .card-header { flex-direction: column; align-items: flex-start; }
+      .card-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
     }
   </style>
 </head>
@@ -580,6 +555,13 @@
   <div class="hero">
     <h1>📚 校園輕資源交換站</h1>
     <p>文具互借・筆記共享・文創交流 — 讓校園閒置變共鳴</p>
+  </div>
+
+  <!-- 資料視覺化區塊 -->
+  <div class="stats-card">
+    <h3>📊 校園資源分類統計 (總覽)</h3>
+    <canvas id="statsCanvas" width="400" height="200" style="max-width:400px; width:100%; height:auto;"></canvas>
+    <div id="statsLegend" class="stats-legend"></div>
   </div>
 
   <!-- 新增資源表單 -->
@@ -677,6 +659,80 @@
   const dateToInput = document.getElementById("dateToInput");
   const clearDateBtn = document.getElementById("clearDateBtn");
 
+  // ========== 新增：資料視覺化函數 (只讀 records，不寫入) ==========
+  function drawStats(recordsArray) {
+    const canvas = document.getElementById("statsCanvas");
+    const legendDiv = document.getElementById("statsLegend");
+    if (!canvas || !legendDiv) return;
+
+    // 計算各分類數量 (不分狀態，全部統計)
+    const categories = ["文具/互借交換", "學習素材/無償共享", "輕文創/展示交換"];
+    const counts = [0, 0, 0];
+    recordsArray.forEach(record => {
+      if (record.category === categories[0]) counts[0]++;
+      else if (record.category === categories[1]) counts[1]++;
+      else if (record.category === categories[2]) counts[2]++;
+    });
+    const total = counts.reduce((a,b) => a+b, 0);
+    if (total === 0) {
+      // 無資料時顯示提示
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.font = "14px system-ui";
+      ctx.fillStyle = "#aaa";
+      ctx.fillText("尚無資源，新增後圖表將自動更新", 20, canvas.height/2);
+      legendDiv.innerHTML = "";
+      return;
+    }
+
+    // 定義顏色
+    const colors = ["#84b88c", "#f3b33d", "#c97e5a"];
+    const labels = ["✏️ 文具/互借", "📖 學習素材", "🎨 輕文創"];
+
+    // 繪製圓餅圖
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width = 400;
+    const height = canvas.height = 200;
+    const centerX = width/2;
+    const centerY = height/2;
+    const radius = Math.min(width, height*2) * 0.35;
+    let startAngle = -Math.PI/2;
+    ctx.clearRect(0, 0, width, height);
+    for (let i=0; i<3; i++) {
+      if (counts[i] === 0) continue;
+      const sliceAngle = (counts[i] / total) * Math.PI * 2;
+      const endAngle = startAngle + sliceAngle;
+      ctx.beginPath();
+      ctx.fillStyle = colors[i];
+      ctx.moveTo(centerX, centerY);
+      ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+      ctx.fill();
+      startAngle = endAngle;
+    }
+    // 繪製內圓 (環形效果)
+    ctx.beginPath();
+    ctx.fillStyle = "#fefefe";
+    ctx.arc(centerX, centerY, radius*0.5, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = "#2c5a3b";
+    ctx.font = "bold 14px system-ui";
+    ctx.fillText(total, centerX-12, centerY+5);
+    ctx.font = "10px system-ui";
+    ctx.fillText("總數", centerX-15, centerY+20);
+
+    // 產生圖例
+    let legendHtml = "";
+    for (let i=0; i<3; i++) {
+      legendHtml += `
+        <div class="legend-item">
+          <div class="legend-color" style="background:${colors[i]}"></div>
+          <span>${labels[i]}: ${counts[i]}</span>
+        </div>
+      `;
+    }
+    legendDiv.innerHTML = legendHtml;
+  }
+
   // ========== 留言功能 (純前端) ==========
   function loadCommentsFromStorage() {
     const stored = localStorage.getItem("post_comments");
@@ -759,6 +815,8 @@
   function renderFilteredList() {
     const toShow = getFilteredAndSortedRecords();
     renderList(toShow);
+    // 新增：重新繪製統計圖表 (使用全域 records，保持總覽統計)
+    drawStats(records);
   }
 
   // ========== Google Sheet 同步 (完全保留原職責) ==========
@@ -1030,7 +1088,7 @@
   async function init() {
     loadCommentsFromStorage();
     await loadData();
-    renderFilteredList();
+    renderFilteredList();   // 內部會呼叫 drawStats
     initFilters();
     form.addEventListener("submit", onFormSubmit);
   }
